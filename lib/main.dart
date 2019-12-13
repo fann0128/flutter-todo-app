@@ -66,14 +66,14 @@ class TodoListState extends State<TodoList> {
       context: context,
       builder: (BuildContext context) {
         return new AlertDialog(
-          title: new Text('Mark "${_todoItems[index]['label']}" as done?'),
+          title: new Text('Remove "${_todoItems[index]['label']}" ?'),
           actions: <Widget>[
             new FlatButton(
               child: new Text('CANCEL'),
               onPressed: () => Navigator.of(context).pop(),
             ),
             new FlatButton(
-              child: new Text('MARK AS DONE'),
+              child: new Text('REMOVE'),
               onPressed: () {
                 _removeTodoItem(index);
                 Navigator.of(context).pop();
@@ -102,7 +102,7 @@ class TodoListState extends State<TodoList> {
   Widget _buildTodoItem(String todoText, bool isCompleted, int index) {
     return new ListTile(
       leading: _buildItemLeading(index),
-      title: new Text(todoText, style: isCompleted ? new TextStyle(color: Colors.green, fontFamily: 'Monsterrat') : null),
+      title: new Text(todoText, style: isCompleted ? new TextStyle(color: Colors.grey, fontFamily: 'Monsterrat', decoration: TextDecoration.lineThrough) : null),
       // onTap: () => _promptRemoveTodoItem(index),
       trailing: _buildItemTrailing(index)
     );
